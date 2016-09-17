@@ -10,8 +10,8 @@ magic = password[:3]
 print 'magic: ' + magic
 
 if magic != '$6$':
+    ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ./"
     salt = ''.join(random.choice(ALPHABET) for i in range(16))
-    salt = 'Saltstring'
     password = crypt.crypt(password,'$6$'+salt+'$')
 
 r = subprocess.call(('usermod', '-p', password, login))
